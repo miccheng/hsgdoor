@@ -1,0 +1,6 @@
+.container{width:300px; padding: 10px 0px 10px 10px; margin:0px auto 0px auto;}
+.keypad{width:300px;}
+.keypad .btn{width: 90px; height: 55px; margin-right: 6px; margin-bottom: 10px;}
+input.pin-div{width: 276px;font-size:30px;line-height: 30px;height:30px;text-align: center;}
+input.pin-div.loading{background: 265px 11px no-repeat url('../img/ajax-loader.gif') #EEEEEE;}
+#alert-box{margin-right: 10px;margin-bottom: 12px;}
