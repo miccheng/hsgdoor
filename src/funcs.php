@@ -5,6 +5,8 @@
  * SetEnv ACL_PINS "path/to/pins/file/"
  * SetEnv ACL_EMAILS "path/to/emails/file/"
  * SetEnv ENTRY_LOG "path/to/log/file/"
+ * SetEnv DOOR_USER ""
+ * SetEnv DOOR_PASS ""
  */
 session_start();
 
@@ -28,7 +30,8 @@ function openDoor()
     $ch = curl_init();
     $options = array(
         CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_USERPWD => sprintf('%s:%s',  getenv('DOOR_USER'), getenv('DOOR_PASS'))
     );
 
     curl_setopt_array($ch, $options);
