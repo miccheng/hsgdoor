@@ -13,8 +13,8 @@ if(!empty($_SESSION['user']))
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width">
     <link rel="apple-touch-icon" href="http://dl.dropbox.com/u/3361521/hackerspace/icon.png" />
-    <link href="css/bootstrap.min.css?t=1363608733" rel="stylesheet" media="screen">
-    <link href="css/style.css?t=1363608733" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.min.css?t=1363619476" rel="stylesheet" media="screen">
+    <link href="css/style.css?t=1363619476" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class="container">
@@ -41,6 +41,6 @@ if(!empty($_SESSION['user']))
     <img src="./img/ajax-loader.gif" style="display:none;" />
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="js/app.min.js?t=1363608733"></script>
+<script src="js/app.min.js?t=1363619476"></script>
 </body>
 </html>
