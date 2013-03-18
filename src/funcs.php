@@ -2,10 +2,8 @@
 /**
  * Apache Env Variables:
  * ---------------------
- * SetEnv DB_HOST "localhost"
- * SetEnv DB_USER "root"
- * SetEnv DB_PASSWORD ""
- * SetEnv DB_NAME ""
+ * SetEnv ACL_PINS "path/to/pins/file/"
+ * SetEnv ACL_EMAILS "path/to/emails/file/"
  * SetEnv ENTRY_LOG "path/to/log/file/"
  */
 session_start();
@@ -42,36 +40,27 @@ function openDoor()
 function checkPin($pin=null, $type='pin')
 {
     $status = false;
-    $mysqli = new mysqli(getenv('DB_HOST'), getenv('DB_USER'), getenv('DB_PASSWORD'), getenv('DB_NAME'));
-    if (mysqli_connect_errno())
-    {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-    }
+    $file = null;
     switch ($type)
     {
         case 'pin':
-            $statement = 'SELECT `user_id` FROM `pins` WHERE `pin`=? AND `active`=1';
+            $file = getenv('ACL_PINS');
             break;
         case 'email':
-            $statement = 'SELECT `id` FROM `users` WHERE `email`=? AND `active`=1';
+            $file = getenv('ACL_EMAILS');
             break;
     }
-
-    if ($stmt = $mysqli->prepare($statement))
+    if (is_file($file))
     {
-        $stmt->bind_param('i', $pin);
-        $stmt->execute();
-        $stmt->bind_result($id);
-        $stmt->fetch();
-        if ($id > 0)
-        {
-            writeLog('Authenticated for: UID(%d) via %s', $id, $type);
-            $status = true;
-        }
-        $stmt->close();
+        $allowed_users = json_decode(file_get_contents($file), true);
     }
-    $mysqli->close();
+
+    if (isset($allowed_users[$pin]))
+    {
+        $status = true;
+        $user = $allowed_users[$pin];
+        writeLog('Authenticated for: UID(%d) via %s', json_encode($user), $type);
+    }
     return $status;
 }
 
