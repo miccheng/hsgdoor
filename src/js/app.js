@@ -52,6 +52,17 @@ function triggerOpen()
     }
 }
 
+function addNum(num)
+{
+    var currPin = $('.pin-div').val();
+    var newPin = currPin + num;
+    $('.pin-div').val(newPin);
+    if (newPin.length == pinLength)
+    {
+        triggerOpen();
+    }
+}
+
 $(document).ready(function()
 {
     var hasTouch = ("ontouchstart" in document.documentElement);
@@ -64,13 +75,7 @@ $(document).ready(function()
 
         if ($(this).attr('role') == 'num')
         {
-            var currPin = $('.pin-div').val();
-            var newPin = currPin + $(this).text();
-            $('.pin-div').val(newPin);
-            if (newPin.length == pinLength)
-            {
-                triggerOpen();
-            }
+            addNum($(this).text());
         }
         else if ($(this).attr('role') == 'clear')
         {
@@ -83,6 +88,23 @@ $(document).ready(function()
         else if ($(this).attr('role') == 'personas_login')
         {
             navigator.id.request();
+        }
+    });
+
+    $(document).keyup(function(event){
+        if (event.keyCode == 49) addNum('1');
+        if (event.keyCode == 50) addNum('2');
+        if (event.keyCode == 51) addNum('3');
+        if (event.keyCode == 52) addNum('4');
+        if (event.keyCode == 53) addNum('5');
+        if (event.keyCode == 54) addNum('6');
+        if (event.keyCode == 55) addNum('7');
+        if (event.keyCode == 56) addNum('8');
+        if (event.keyCode == 57) addNum('9');
+        if (event.keyCode == 48) addNum('0');
+    }).keydown(function(event){
+        if (event.which == 13) {
+            event.preventDefault();
         }
     });
 
