@@ -23,7 +23,7 @@ function writeLog($msg)
 
 function openDoor()
 {
-    $url = 'http://hsgdoor-proxy.codersg.com/open.json';
+    $url = 'http://door-arduino.hackerspace.sg/open.json';
 
     $ch = curl_init();
     $options = array(
