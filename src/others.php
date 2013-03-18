@@ -42,7 +42,6 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : null;
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://login.persona.org/include.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <script src="js/app.min.js"></script>
 <script>
     $(document).ready(function()
