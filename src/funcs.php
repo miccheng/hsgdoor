@@ -59,7 +59,7 @@ function checkPin($pin=null, $type='pin')
     {
         $status = true;
         $user = $allowed_users[$pin];
-        writeLog('Authenticated for: UID(%d) via %s', json_encode($user), $type);
+        writeLog('Authenticated for: UID(%s) via %s', json_encode($user), $type);
     }
     return $status;
 }
