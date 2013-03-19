@@ -83,7 +83,7 @@ $(document).ready(function()
         }
         else if ($(this).attr('role') == 'other_logins')
         {
-            window.location = 'others.php';
+            window.location = 'account.php';
         }
         else if ($(this).attr('role') == 'personas_login')
         {
@@ -92,7 +92,6 @@ $(document).ready(function()
     });
 
     $(document).keyup(function(event){
-        event.preventDefault();
         if (event.keyCode == 49) addNum('1');
         if (event.keyCode == 50) addNum('2');
         if (event.keyCode == 51) addNum('3');
@@ -103,15 +102,16 @@ $(document).ready(function()
         if (event.keyCode == 56) addNum('8');
         if (event.keyCode == 57) addNum('9');
         if (event.keyCode == 48) addNum('0');
-        if (event.keyCode == 8)
-        {
-            var currPin = $('.pin-div').val();
-            var newPin = currPin.substring(0, currPin.length - 1);
-            $('.pin-div').val(newPin);
-        }
     }).keydown(function(event){
         if (event.which == 13) {
             event.preventDefault();
+        }
+        if (event.keyCode == 8)
+        {
+            event.preventDefault();
+            var currPin = $('.pin-div').val();
+            var newPin = currPin.substring(0, currPin.length - 1);
+            $('.pin-div').val(newPin);
         }
     });
 

@@ -5,7 +5,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : null;
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HSG Door Login</title>
+    <title>HSG Door</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width">
     <link rel="apple-touch-icon" href="http://dl.dropbox.com/u/3361521/hackerspace/icon.png" />
@@ -42,7 +42,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : null;
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://login.persona.org/include.js"></script>
-<script src="js/app.min.js?t=1363670032"></script>
+<script src="js/app.min.js?t=1363672335"></script>
 <script>
     $(document).ready(function()
     {
