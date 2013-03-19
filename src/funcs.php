@@ -2,8 +2,6 @@
 /**
  * Apache Env Variables:
  * ---------------------
- * SetEnv ACL_PINS "path/to/pins/file/"
- * SetEnv ACL_EMAILS "path/to/emails/file/"
  * SetEnv ENTRY_LOG "path/to/log/file/"
  * SetEnv DOOR_USER ""
  * SetEnv DOOR_PASS ""
@@ -47,7 +45,7 @@ function saveAuthCookie($user=array())
     if (empty($user)) return;
     $user['date'] = date('Y-m-d H:i:s');
     $cookie_var = md5(json_encode($user) . getenv('AUTH_COOKIE_SALT'));
-    file_put_contents(json_encode($user), __DIR__ . '/codes/auth/' . $cookie_var);
+    file_put_contents(json_encode($user), dirname(__DIR__) . '/codes/auth/' . $cookie_var);
     setCookie('hsgdoor_auth', $cookie_var, time() + 1576800000); // 50 years
 }
 
@@ -56,7 +54,7 @@ function isVisitorAuth()
     if (!empty($_COOKIE['hsgdoor_auth']))
     {
         $cookie_var = $_COOKIE['hsgdoor_auth'];
-        $path = __DIR__ . '/codes/auth/' . $cookie_var;
+        $path = dirname(__DIR__) . '/codes/auth/' . $cookie_var;
         if ( is_file($path) )
         {
             $user = json_decode(file_get_contents($path), true);
@@ -76,10 +74,10 @@ function checkPin($pin=null, $type='pin')
     switch ($type)
     {
         case 'pin':
-            $file = getenv('ACL_PINS');
+            $file = dirname(__DIR__) . '/codes/pins.json';
             break;
         case 'email':
-            $file = getenv('ACL_EMAILS');
+            $file = dirname(__DIR__) . '/codes/emails.json';
             break;
     }
     if (is_file($file))
