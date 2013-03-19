@@ -38,7 +38,7 @@ $user = isVisitorAuth();
                 TW
             </button>
         </div>
-        <a href="index.php"><i class="icon-chevron-left"></i>Login with PIN</a>
+        <a href="/"><i class="icon-chevron-left"></i>Login with PIN</a>
     <?php endif; ?>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
