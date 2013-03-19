@@ -25,6 +25,8 @@ $user = isVisitorAuth();
         </button>
         &nbsp;<a href="logout.php"><span>Sign out</span></a>
         <div id="alert-box" class="alert" style="display:none;margin-top:10px;"></div>
+
+        <p><em>PS: We've saved a cookie on your browser to remember you. Bookmark this page to quickly trigger the door open signal.</em></p>
     <?php else: ?>
         <div id="alert-box" class="alert" style="display:none;"></div>
         <div class="keypad">
