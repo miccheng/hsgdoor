@@ -47,6 +47,9 @@ $user = isVisitorAuth();
 <script>
     $(document).ready(function()
     {
+        var hasTouch = ("ontouchstart" in document.documentElement);
+        var bindPhrase = hasTouch ? 'touchstart' : 'click';
+
         $('.btn-open').bind(bindPhrase, function(e)
         {
             e.preventDefault();
