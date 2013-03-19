@@ -13,7 +13,7 @@ while($row = fgetcsv($fp))
           'id'    => $row[3]
         , 'name'  => $row[1]
         , 'email' => $row[0]
-        , 'pin'   => $row[2]
+        , 'pin'   => str_pad($row[2], 6, "0", STR_PAD_LEFT)
     );
     $records[] = $record;
 }
