@@ -74,7 +74,7 @@ $user = isVisitorAuth();
             });
         });
     });
-    <?php if (!empty($user)): ?>
+    <?php if (empty($user)): ?>
     navigator.id.watch({
         loggedInUser: null,
         onlogin: function(assertion)
