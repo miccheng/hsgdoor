@@ -44,7 +44,7 @@ function saveAuthCookie($user=array())
 {
     if (empty($user)) return;
     $user['date'] = date('Y-m-d H:i:s');
-    $cookie_var = md5(json_encode($user) . getenv('AUTH_COOKIE_SALT'));
+    $cookie_var = md5(time() . json_encode($user) . getenv('AUTH_COOKIE_SALT'));
     file_put_contents(dirname(__DIR__) . '/codes/auth/' . $cookie_var, json_encode($user));
     setCookie('hsgdoor_auth', $cookie_var, time() + 1576800000); // 50 years
 }
