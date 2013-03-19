@@ -7,6 +7,7 @@
  * SetEnv ENTRY_LOG "path/to/log/file/"
  * SetEnv DOOR_USER ""
  * SetEnv DOOR_PASS ""
+ * SetEnv PASS_SALT ""
  */
 session_start();
 
@@ -58,6 +59,7 @@ function checkPin($pin=null, $type='pin')
         $allowed_users = json_decode(file_get_contents($file), true);
     }
 
+    $pin = md5($pin . getenv('PASS_SALT'));
     if (isset($allowed_users[$pin]))
     {
         $status = true;

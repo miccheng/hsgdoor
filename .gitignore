@@ -1,2 +1,4 @@
-code/*
+codes/*.csv
+codes/*.json
+codes/config.inc
 logs/*
