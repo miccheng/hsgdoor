@@ -1,4 +1,6 @@
 <?php
+require_once('funcs.php');
+
 $user = isVisitorAuth();
 ?>
 <!DOCTYPE html>
