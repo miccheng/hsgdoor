@@ -92,6 +92,7 @@ $(document).ready(function()
     });
 
     $(document).keyup(function(event){
+        event.preventDefault();
         if (event.keyCode == 49) addNum('1');
         if (event.keyCode == 50) addNum('2');
         if (event.keyCode == 51) addNum('3');
@@ -107,7 +108,6 @@ $(document).ready(function()
             var currPin = $('.pin-div').val();
             var newPin = currPin.substring(0, currPin.length - 1);
             $('.pin-div').val(newPin);
-            event.preventDefault();
         }
     }).keydown(function(event){
         if (event.which == 13) {
