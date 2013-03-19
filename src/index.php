@@ -1,3 +1,13 @@
+<?php
+require_once('funcs.php');
+
+$user = isVisitorAuth();
+if ($user)
+{
+    header('Location: account.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
