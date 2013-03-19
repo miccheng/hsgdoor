@@ -8,6 +8,7 @@
  * SetEnv DOOR_USER ""
  * SetEnv DOOR_PASS ""
  * SetEnv PASS_SALT ""
+ * SetEnv AUTH_COOKIE_SALT ""
  */
 session_start();
 
@@ -41,9 +42,36 @@ function openDoor()
     return json_decode($result, true);
 }
 
+function saveAuthCookie($user=array())
+{
+    if (empty($user)) return;
+    $user['date'] = date('Y-m-d H:i:s');
+    $cookie_var = md5(json_encode($user) . getenv('AUTH_COOKIE_SALT'));
+    file_put_contents(json_encode($user), __DIR__ . '/codes/auth/' . $cookie_var);
+    setCookie('hsgdoor_auth', $cookie_var, time() + 1576800000); // 50 years
+}
+
+function isVisitorAuth()
+{
+    if (!empty($_COOKIE['hsgdoor_auth']))
+    {
+        $cookie_var = $_COOKIE['hsgdoor_auth'];
+        $path = __DIR__ . '/codes/auth/' . $cookie_var;
+        if ( is_file($path) )
+        {
+            $user = json_decode(file_get_contents($path), true);
+            return $user;
+        }
+        else
+        {
+            setCookie('hsgdoor_auth', '', time() - 86400);
+        }
+    }
+    return false;
+}
+
 function checkPin($pin=null, $type='pin')
 {
-    $status = false;
     $file = null;
     switch ($type)
     {
@@ -62,11 +90,12 @@ function checkPin($pin=null, $type='pin')
     $pin = md5($pin . getenv('PASS_SALT'));
     if (isset($allowed_users[$pin]))
     {
-        $status = true;
         $user = $allowed_users[$pin];
         writeLog('Authenticated for: UID(%s) via %s', json_encode($user), $type);
+        saveAuthCookie($user);
+        return $user;
     }
-    return $status;
+    return false;
 }
 
 function PersonaVerify()
@@ -81,7 +110,8 @@ function PersonaVerify()
     );
 
     $scheme = 'http';
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "on") {
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "on")
+    {
         $scheme = 'https';
     }
     $audience = sprintf(

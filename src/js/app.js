@@ -32,13 +32,16 @@ function triggerOpen()
     {
         $.ajax({
             type: 'POST',
-            url: 'open.php',
+            url: 'auth.php',
             dataType: 'json',
-            data: {pin: pin},
+            data: {pin: pin, type: 'pin'},
             success: function(res, status, xhr) {
                 if (res.status == 'okay')
                 {
                     showAlert('alert-success', res.msg);
+                    setTimeout(function(){
+                        window.location = 'account.php';
+                    }, 2100);
                 }
                 else
                 {
@@ -114,32 +117,5 @@ $(document).ready(function()
             var newPin = currPin.substring(0, currPin.length - 1);
             $('.pin-div').val(newPin);
         }
-    });
-
-    $('.btn-open').bind(bindPhrase, function(e)
-    {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: 'open.php',
-            dataType: 'json',
-            data: {pin: ''},
-            success: function(res, status, xhr) {
-                if (res.status == 'okay')
-                {
-                    showAlert('alert-success', res.msg);
-                    setTimeout(function(){
-                        window.location = 'account.php';
-                    }, 2100);
-                }
-                else
-                {
-                    showAlert('alert-error', res.msg);
-                }
-            },
-            error: function(xhr, status, err) {
-                showAlert('alert-error', err);
-            }
-        });
     });
 });
