@@ -1,4 +1,5 @@
 codes/*.csv
 codes/*.json
+codes/auth/*
 codes/config.inc
 logs/*
