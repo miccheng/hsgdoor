@@ -54,6 +54,7 @@ function triggerOpen()
 
 function addNum(num)
 {
+    if (lockKeyPad) return;
     var currPin = $('.pin-div').val();
     var newPin = currPin + num;
     $('.pin-div').val(newPin);
@@ -127,6 +128,9 @@ $(document).ready(function()
                 if (res.status == 'okay')
                 {
                     showAlert('alert-success', res.msg);
+                    setTimeout(function(){
+                        window.location = 'account.php';
+                    }, 2100);
                 }
                 else
                 {

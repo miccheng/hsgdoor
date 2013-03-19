@@ -42,7 +42,7 @@ $user = !empty($_SESSION['user']) ? $_SESSION['user'] : null;
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://login.persona.org/include.js"></script>
-<script src="js/app.min.js?t=1363672335"></script>
+<script src="js/app.min.js?t=1363673200"></script>
 <script>
     $(document).ready(function()
     {
