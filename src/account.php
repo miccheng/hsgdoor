@@ -19,7 +19,7 @@ $user = isVisitorAuth();
     <?php if (!empty($user)): ?>
         <h3>Welcome back!</h3>
         <p>You are logged into <strong><?php echo $user['name']?></strong></p>
-        <button class="btn-open btn btn-warning btn-large">
+        <button class="btn-open btn btn-success btn-large">
             <i class="icon-user icon-white"></i>
             OPEN DOOR
         </button>
