@@ -13,5 +13,6 @@ if ($user)
     }
 }
 setCookie('hsgdoor_auth', '', time() - 86400);
-
 session_destroy();
+
+header('Location: /');
