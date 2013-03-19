@@ -102,6 +102,13 @@ $(document).ready(function()
         if (event.keyCode == 56) addNum('8');
         if (event.keyCode == 57) addNum('9');
         if (event.keyCode == 48) addNum('0');
+        if (event.keyCode == 8)
+        {
+            var currPin = $('.pin-div').val();
+            var newPin = currPin.substring(0, currPin.length - 1);
+            $('.pin-div').val(newPin);
+            event.preventDefault();
+        }
     }).keydown(function(event){
         if (event.which == 13) {
             event.preventDefault();
