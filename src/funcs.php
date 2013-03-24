@@ -25,15 +25,16 @@ function writeLog($msg, $type='entry')
     }
     $ts = '[' . date('r') . ']:';
 
+    $log_file = '';
     if ($type == 'entry')
     {
-        $file = dirname(__DIR__) . '/logs/hsgdoor-entry.log';
+        $log_file = dirname(__DIR__) . '/logs/hsgdoor-entry.log';
     }
     else if ($type == 'auth')
     {
-        $file = dirname(__DIR__) . '/logs/hsgdoor-auth.log';
+        $log_file = dirname(__DIR__) . '/logs/hsgdoor-auth.log';
     }
-    error_log($ts . $_msg . "\n", 3, $file);
+    error_log($ts . $_msg . "\n", 3, $log_file);
 }
 
 function openDoor($user)
