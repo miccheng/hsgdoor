@@ -29,7 +29,7 @@ if ($type == 'personas')
 
     $pin = $result['email'];
     $type = 'email';
-    writeLog('Personans Logged in as: %s, Response: %s', $email, $raw_reponse);
+    writeLog('Personas Logged in as: %s, Response: %s', $email, $raw_reponse, 'auth');
 }
 
 if ($user = checkPin($pin, $type))

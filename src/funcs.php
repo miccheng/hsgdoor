@@ -10,7 +10,11 @@
  */
 session_start();
 
-function writeLog($msg)
+/**
+ * @param string $msg
+ * @param string $type entry|auth
+ */
+function writeLog($msg, $type='entry')
 {
     $_msg = $msg;
     if (func_num_args() > 1)
@@ -20,7 +24,16 @@ function writeLog($msg)
         $_msg = vsprintf($msg, $args);
     }
     $ts = '[' . date('r') . ']:';
-    error_log($ts . $_msg . "\n", 3, getenv('ENTRY_LOG'));
+
+    if ($type == 'entry')
+    {
+        $file = dirname(__DIR__) . '/logs/hsgdoor-entry.log';
+    }
+    else if ($type == 'auth')
+    {
+        $file = dirname(__DIR__) . '/logs/hsgdoor-auth.log';
+    }
+    error_log($ts . $_msg . "\n", 3, $file);
 }
 
 function openDoor($user)
@@ -40,7 +53,7 @@ function openDoor($user)
     $result = json_decode($result, true);
     if ($result['status'] == 'OPEN')
     {
-        writeLog('Door Opens for: %s via COOKIE', json_encode($user));
+        writeLog('Door Opens for: %s via COOKIE', json_encode($user), 'entry');
     }
     return $result;
 }
@@ -94,7 +107,7 @@ function checkPin($pin=null, $type='pin')
     if (isset($allowed_users[$pin]))
     {
         $user = $allowed_users[$pin];
-        writeLog('Authenticated for: UID(%s) via %s', json_encode($user), $type);
+        writeLog('Authenticated for: UID(%s) via %s', json_encode($user), strtoupper($type), 'auth');
         saveAuthCookie($user);
         return $user;
     }
