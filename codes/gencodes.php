@@ -23,7 +23,7 @@ $pins = array();
 $emails = array();
 foreach($records as $record)
 {
-    $email = md5($record['email'] . $md5_salt);
+    $email = md5(trim($record['email']) . $md5_salt);
     $pin = md5($record['pin'] . $md5_salt);
     $read_only_record = array('id'=>$record['id'], 'name'=>$record['name']);
 
