@@ -10,27 +10,24 @@
  */
 session_start();
 
-/**
- * @param string $msg
- * @param string $type entry|auth
- */
-function writeLog($msg, $type='entry')
+function writeLog($msg)
 {
+    $type = 'entry';
     $_msg = $msg;
     if (func_num_args() > 1)
     {
         $args = func_get_args();
         array_shift($args);
+        if (func_num_args() > 2)
+        {
+            $type = array_pop($args);
+        }
         $_msg = vsprintf($msg, $args);
     }
     $ts = '[' . date('r') . ']:';
 
-    $log_file = '';
-    if ($type == 'entry')
-    {
-        $log_file = dirname(__DIR__) . '/logs/hsgdoor-entry.log';
-    }
-    else if ($type == 'auth')
+    $log_file = dirname(__DIR__) . '/logs/hsgdoor-entry.log';
+    if ($type == 'auth')
     {
         $log_file = dirname(__DIR__) . '/logs/hsgdoor-auth.log';
     }
