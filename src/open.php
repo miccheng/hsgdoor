@@ -10,7 +10,7 @@ $response = array(
 $user = isVisitorAuth();
 if ($user)
 {
-    $result = openDoor();
+    $result = openDoor($user);
     if ($result['status'] == 'OPEN')
     {
         $response['status'] = 'okay';

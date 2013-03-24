@@ -23,7 +23,7 @@ function writeLog($msg)
     error_log($ts . $_msg . "\n", 3, getenv('ENTRY_LOG'));
 }
 
-function openDoor()
+function openDoor($user)
 {
     $url = 'http://door-arduino.hackerspace.sg/open.json';
 
@@ -37,7 +37,12 @@ function openDoor()
     curl_setopt_array($ch, $options);
     $result = curl_exec($ch);
     curl_close($ch);
-    return json_decode($result, true);
+    $result = json_decode($result, true);
+    if ($result['status'] == 'OPEN')
+    {
+        writeLog('Door Opens for: %s via COOKIE', json_encode($user));
+    }
+    return $result;
 }
 
 function saveAuthCookie($user=array())

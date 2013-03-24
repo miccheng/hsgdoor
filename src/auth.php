@@ -32,12 +32,12 @@ if ($type == 'personas')
     writeLog('Personans Logged in as: %s, Response: %s', $email, $raw_reponse);
 }
 
-if (checkPin($pin, $type))
+if ($user = checkPin($pin, $type))
 {
     $response['status'] = 'okay';
     $response['msg'] = 'Authorized';
 
-    $result = openDoor();
+    $result = openDoor($user);
     if ($result['status'] == 'OPEN')
     {
         $response['msg'] = 'Door Open!';
