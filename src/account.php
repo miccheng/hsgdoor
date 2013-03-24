@@ -10,8 +10,8 @@ $user = isVisitorAuth();
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width">
     <link rel="apple-touch-icon" href="img/icon.png" />
-    <link href="css/bootstrap.min.css?t=1363669820" rel="stylesheet" media="screen">
-    <link href="css/style.css?t=1363669820" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class="container">
@@ -45,7 +45,7 @@ $user = isVisitorAuth();
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="https://login.persona.org/include.js"></script>
-<script src="js/app.min.js?t=1363692355"></script>
+<script src="js/app.js"></script>
 <script>
     $(document).ready(function()
     {
