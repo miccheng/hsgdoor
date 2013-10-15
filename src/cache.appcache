@@ -6,6 +6,8 @@ NETWORK:
 CACHE:
 /img/icon.png
 /img/ajax-loader.gif
+/img/glyphicons-halflings-white.png
+/img/glyphicons-halflings.png
 /css/bootstrap.min.css
 /css/style.css
 /js/jquery-1.9.1.min.js
