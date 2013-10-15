@@ -4,14 +4,14 @@ require_once('funcs.php');
 $user = isVisitorAuth();
 ?>
 <!DOCTYPE html>
-<html>
+<html manifest="cache.appcache">
 <head>
     <title>HSG Door</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width">
-    <link rel="apple-touch-icon" href="img/icon.png" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link rel="apple-touch-icon" href="/img/icon.png" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/style.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class="container">
@@ -23,7 +23,7 @@ $user = isVisitorAuth();
             <i class="icon-user icon-white"></i>
             OPEN DOOR
         </button>
-        &nbsp;<a href="logout.php"><span>Sign out</span></a>
+        &nbsp;<a href="/logout.php"><span>Sign out</span></a>
         <div id="alert-box" class="alert" style="display:none;margin-top:10px;"></div>
         <br/><br/>
         <small><em>PS: We've saved a cookie on your browser to remember you. Bookmark this page to quickly trigger the door open signal.</em></small>
@@ -43,9 +43,9 @@ $user = isVisitorAuth();
         <a href="/"><i class="icon-chevron-left"></i>Login with PIN</a>
     <?php endif; ?>
 </div>
-<script src="js/jquery-1.9.1.min.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
 <script src="https://login.persona.org/include.js"></script>
-<script src="js/app.js"></script>
+<script src="/js/app.js"></script>
 <script>
     $(document).ready(function()
     {

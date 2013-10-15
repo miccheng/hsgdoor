@@ -9,14 +9,14 @@ if ($user)
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html manifest="cache.appcache">
 <head>
     <title>HSG Door</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width">
-    <link rel="apple-touch-icon" href="img/icon.png" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link rel="apple-touch-icon" href="/img/icon.png" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/style.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div class="container">
@@ -40,9 +40,9 @@ if ($user)
             <i class="icon-user"></i>
         </button>
     </div>
-    <img src="img/ajax-loader.gif" style="display:none;" />
+    <img src="/img/ajax-loader.gif" style="display:none;" />
 </div>
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/app.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/js/app.js"></script>
 </body>
 </html>

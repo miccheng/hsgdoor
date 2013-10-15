@@ -1,0 +1,12 @@
+CACHE MANIFEST
+NETWORK:
+/auth.php
+/logout.php
+/open.php
+CACHE:
+/img/icon.png
+/img/ajax-loader.gif
+/css/bootstrap.min.css
+/css/style.css
+/js/jquery-1.9.1.min.js
+/js/app.js
