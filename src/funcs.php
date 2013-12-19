@@ -36,19 +36,10 @@ function writeLog($msg)
 
 function openDoor($user)
 {
-    $url = 'http://door-arduino.hackerspace.sg/open.json';
+    $cmd = sprintf('%s/codes/opendoor.sh', dirname(__DIR__));
+    $raw_result = exec($cmd);
+    $result = json_decode($raw_result, true);
 
-    $ch = curl_init();
-    $options = array(
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_USERPWD => sprintf('%s:%s',  getenv('DOOR_USER'), getenv('DOOR_PASS'))
-    );
-
-    curl_setopt_array($ch, $options);
-    $result = curl_exec($ch);
-    curl_close($ch);
-    $result = json_decode($result, true);
     if ($result['status'] == 'OPEN')
     {
         writeLog('Door Opens for: %s via COOKIE', json_encode($user), 'entry');
