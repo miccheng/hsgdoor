@@ -36,7 +36,8 @@ function writeLog($msg)
 
 function openDoor($user)
 {
-    $cmd = sprintf('%s/codes/opendoor.sh', dirname(__DIR__));
+    $basic_auth_hash = base64_encode(sprintf('%s:%s',  getenv('DOOR_USER'), getenv('DOOR_PASS')));
+    $cmd = sprintf('%s/codes/opendoor.sh %s', dirname(__DIR__), $basic_auth_hash);
     $raw_result = exec($cmd);
     $result = json_decode($raw_result, true);
 
