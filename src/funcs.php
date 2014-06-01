@@ -60,8 +60,15 @@ function saveAuthCookie($user=array())
 function isVisitorAuth()
 {
     $auth_var = 'hsgdoor_auth';
-    $cookie_var = !empty($_COOKIE[$auth_var]) ? $_COOKIE[$auth_var] : null;
-    $cookie_var = !empty($_POST[$auth_var]) && is_null($cookie_var) ? $_POST[$auth_var] : null;
+    $cookie_var = null;
+    if (!empty($_COOKIE[$auth_var]))
+    {
+        $cookie_var = $_COOKIE[$auth_var];
+    }
+    else if (!empty($_POST[$auth_var]))
+    {
+        $cookie_var = $_POST[$auth_var];
+    }
     if (!is_null($cookie_var))
     {
         $path = dirname(__DIR__) . '/codes/auth/' . $cookie_var;
